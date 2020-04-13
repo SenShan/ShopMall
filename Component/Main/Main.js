@@ -10,6 +10,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
+import {Navigator} from 'react-native-deprecated-custom-components';
 
 /*======导入外部组件类=======*/
 import TabNavigator from 'react-native-tab-navigator';
@@ -51,7 +52,13 @@ export default class Main extends Component {
           badgeText={'1'}
           selected={this.state.selectedTab === home}
           onPress={() => this.setState({selectedTab: home})}>
-          <Home />
+          <Navigator
+            initialRoute={{name: '首页', component: Home}}
+            renderScene={(route, navigator) => {
+              let Component = route.component;
+              return <Component {...route.passProps} navigator={navigator} />;
+            }}
+          />
         </TabNavigator.Item>
         <TabNavigator.Item
           title="更多"
@@ -116,7 +123,41 @@ export default class Main extends Component {
     );
   }
 }
-
+// renderTabBarItem(
+//   title,
+//   iconName,
+//   selectedIconName,
+//   selectedTab,
+//   componentName,
+//   component,
+//   badgeText,
+// ) {
+//   return (
+//     <TabNavigatorItem
+//       title={title}
+//       renderIcon={() => (
+//         <Image source={require(iconName)} style={styles.iconStyle} />
+//       )}
+//       renderSelectedIcon={() => (
+//         <Image source={require(selectedIconName)} style={styles.iconStyle} />
+//       )}
+//       selected={(this.state.selectedTab = selectedTab)}
+//       onPress={() => this.setState({selectedTab: selectedTab})}
+//       selectedTitleStyle={styles.selectedTitleStyle}
+//       badgeText={badgeText}>
+//       <Navigator
+//         initialRoute={{name: componentName, component: component}}
+//         configureScene={() => {
+//           return Navigator.sceneConfig.PushFromRight;
+//         }}
+//         renderScene={(route, navigator) => {
+//           let Component = route.component;
+//           return <Component {...route.passProps} navigator={navigator} />;
+//         }}
+//       />
+//     </TabNavigatorItem>
+//   );
+// }
 const styles = StyleSheet.create({
   iconStyle: {
     width: Platform.OS === 'ios' ? 30 : 25,

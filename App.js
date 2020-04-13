@@ -7,8 +7,17 @@
  */
 
 import React from 'react';
-import Main from './Component/Main/Main';
+import {Navigator} from 'react-native-deprecated-custom-components';
+import Launch from './Component/Launch';
 const App: () => React$Node = () => {
-  return <Main />;
+  return (
+    <Navigator
+      initialRoute={{name: '启动页', component: Launch}}
+      renderScene={(route, navigator) => {
+        let Component = route.component;
+        return <Component {...route.passProps} navigator={navigator} />;
+      }}
+    />
+  );
 };
 export default App;

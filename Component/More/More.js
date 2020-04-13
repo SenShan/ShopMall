@@ -1,11 +1,11 @@
 /**
- * 购物车
+ * 更多
  * */
 import React, {Component} from 'react';
 import {Text} from 'react-native';
 
-export default class Shop extends Component {
+export default class More extends Component {
   render(): React.ReactNode {
-    return <Text>购物车</Text>;
+    return <Text>更多</Text>;
   }
 }

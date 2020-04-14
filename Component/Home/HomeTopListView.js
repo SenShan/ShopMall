@@ -7,9 +7,10 @@ import {
   TouchableOpacity,
   Image,
   Platform,
+  ToastAndroid,
 } from 'react-native';
 import ListView from 'deprecated-react-native-listview';
-import {screenW} from './Home';
+import {screenW, screenH} from '../Launch';
 const cols = 5;
 const cellW = Platform.OS === 'ios' ? 70 : 60;
 const cellH = 70;
@@ -38,7 +39,14 @@ export default class HomeTopListView extends Component {
   // 返回具体的一行
   renderRow(rowData) {
     return (
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => {
+          ToastAndroid.show(
+            '图片=' + rowData.image + 'title=' + rowData.title,
+            ToastAndroid.SHORT,
+          );
+        }}>
         <View style={styles.cellStyle}>
           <Image
             // source={{uri: rowData.image}}

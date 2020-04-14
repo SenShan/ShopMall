@@ -12,11 +12,9 @@ import {
   ScrollView,
   Platform,
   ToastAndroid,
-  Dimensions,
 } from 'react-native';
 import HomeTopView from './HomeTopView';
-export const screenW = Dimensions.get('window').width;
-const screenH = Dimensions.get('window').height;
+import {screenW} from '../Launch';
 import HomeDetail from './HomeDetail';
 export default class Home extends Component {
   render(): React.ReactNode {
@@ -38,7 +36,11 @@ export default class Home extends Component {
           }}>
           <Text style={styles.leftTitleStyle}>上海</Text>
         </TouchableOpacity>
-        <TextInput placeholder="输入商家" style={styles.topInputStyle} />
+        <TextInput
+          password={true}
+          placeholder="输入商家"
+          style={styles.topInputStyle}
+        />
         <View style={styles.rightNavViewStyle}>
           <TouchableOpacity
             onPress={() => {
@@ -70,10 +72,13 @@ export default class Home extends Component {
     });
   }
   fetchData() {
+    console.log('*****statr*****');
     fetch('https://api.douban.com/v2/movie/in_theaters')
-      .then((response) => response.json())
-      .then((responseData) => {
-        console.log('*******' + responseData.subjects);
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log('*******' + JSON.stringify(json.ok));
       })
       .done();
   }
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
     paddingEnd: 10,
   },
   topInputStyle: {
-    width: screenW * 0.71,
+    width: screenW * 0.8,
     height: Platform.OS === 'ios' ? 40 : 35,
     backgroundColor: 'white',
     marginTop: Platform.OS === 'ios' ? 18 : 0,

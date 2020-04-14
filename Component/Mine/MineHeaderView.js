@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {screenW} from '../Home/Home';
+import {screenW} from '../Launch';
 
 export default class MineHeaderView extends Component {
   render(): React.ReactNode {

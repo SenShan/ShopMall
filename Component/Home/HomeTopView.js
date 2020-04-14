@@ -7,7 +7,7 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import {screenW} from './Home';
+import {screenW} from '../Launch';
 import HomeTopListView from './HomeTopListView';
 const TopMenuJson = require('./TopMenu.json');
 export default class HomeTopView extends Component {
@@ -24,7 +24,7 @@ export default class HomeTopView extends Component {
         <ScrollView
           horizontal={true}
           pagingEnabled={true}
-          showHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           onMomentumScrollEnd={this.onScrollAnimationEnd}>
           {this.renderScrollItem()}
         </ScrollView>
@@ -56,7 +56,7 @@ export default class HomeTopView extends Component {
       style;
     for (var i = 0; i < 2; i++) {
       //设置圆点样式
-      style = (i === this.state.activePage) ? {color: 'orange'} : {color: 'gray'};
+      style = i === this.state.activePage ? {color: 'orange'} : {color: 'gray'};
       indicatorArr.push(
         <Text key={i} style={[{fontSize: 25}, style]}>
           •

@@ -11,7 +11,7 @@ export default class Mine extends Component {
     return (
       <ScrollView>
         <View style={{marginTop: 20}}>
-            <MineHeaderView/>
+          <MineHeaderView />
           <CommonMyCell
             leftIconName={require('../../image/money.png')}
             rightIconName={require('../../image/next.png')}

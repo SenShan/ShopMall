@@ -9,24 +9,23 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  ScrollView,
   Platform,
   ToastAndroid,
+  Dimensions,
 } from 'react-native';
-// const Dimensions = require('Dimensions'); //必须要写这一行，否则报错，无法找到这个变量
-const screenW = 660;
-// const screenH = Dimensions.get('window').height;
+import HomeTopView from './HomeTopView';
+export const screenW = Dimensions.get('window').width;
+const screenH = Dimensions.get('window').height;
 import HomeDetail from './HomeDetail';
 export default class Home extends Component {
   render(): React.ReactNode {
     return (
       <View style={styles.container}>
         {this.renderNavBar()}
-        <TouchableOpacity
-          onPress={() => {
-            this.pushToDetail();
-          }}>
-          <Text style={styles.welcome}>Home</Text>
-        </TouchableOpacity>
+        <ScrollView>
+          <HomeTopView />
+        </ScrollView>
       </View>
     );
   }
@@ -52,6 +51,7 @@ export default class Home extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
+              this.fetchData();
               ToastAndroid.show('扫码', ToastAndroid.SHORT);
             }}>
             <Image
@@ -68,6 +68,14 @@ export default class Home extends Component {
       component: HomeDetail, // 要跳转过去的组件
       title: '首页详细页',
     });
+  }
+  fetchData() {
+    fetch('https://api.douban.com/v2/movie/in_theaters')
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log('*******' + responseData.subjects);
+      })
+      .done();
   }
 }
 

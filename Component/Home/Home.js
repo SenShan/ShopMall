@@ -12,11 +12,16 @@ import {
   ScrollView,
   Platform,
   ToastAndroid,
+  Dimensions,
 } from 'react-native';
 import HomeTopView from './HomeTopView';
-import {screenW} from '../Launch';
+const screenW = Dimensions.get('window').width;
+import {TENANT, USERNAME, PASSWORD} from '../Param';
 import HomeDetail from './HomeDetail';
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
   render(): React.ReactNode {
     return (
       <View style={styles.container}>
@@ -36,11 +41,7 @@ export default class Home extends Component {
           }}>
           <Text style={styles.leftTitleStyle}>上海</Text>
         </TouchableOpacity>
-        <TextInput
-          password={true}
-          placeholder="输入商家"
-          style={styles.topInputStyle}
-        />
+        <TextInput placeholder="输入商家" style={styles.topInputStyle} />
         <View style={styles.rightNavViewStyle}>
           <TouchableOpacity
             onPress={() => {
@@ -72,13 +73,27 @@ export default class Home extends Component {
     });
   }
   fetchData() {
-    console.log('*****statr*****');
-    fetch('https://api.douban.com/v2/movie/in_theaters')
+    console.log('*****start*****');
+    fetch('https://ibottle-show.haoduoke.cn/k/integration/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        tenant: TENANT,
+        username: USERNAME,
+        password: PASSWORD,
+      }),
+    })
       .then((response) => {
-        return response.json();
+        return response.text();
       })
       .then((json) => {
-        console.log('*******' + JSON.stringify(json.ok));
+        console.log('***end***' + json);
+      })
+      .catch((error) => {
+        console.error(error);
       })
       .done();
   }

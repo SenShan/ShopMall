@@ -24,7 +24,7 @@ export default class Launch extends Component {
 const styles = StyleSheet.create({
   launchStyle: {
     flex: 1,
-    width: null,
-    height: null,
+    width: screenW,
+    height: screenH,
   },
 });

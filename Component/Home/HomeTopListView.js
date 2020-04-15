@@ -8,9 +8,10 @@ import {
   Image,
   Platform,
   ToastAndroid,
+  Dimensions,
 } from 'react-native';
 import ListView from 'deprecated-react-native-listview';
-import {screenW, screenH} from '../Launch';
+const screenW = Dimensions.get('window').width;
 const cols = 5;
 const cellW = Platform.OS === 'ios' ? 70 : 60;
 const cellH = 70;

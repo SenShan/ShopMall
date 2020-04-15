@@ -21,6 +21,10 @@ import HomeDetail from './HomeDetail';
 export default class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      textContent: null,
+      editContent: null,
+    };
   }
   render(): React.ReactNode {
     return (
@@ -28,6 +32,9 @@ export default class Home extends Component {
         {this.renderNavBar()}
         <ScrollView>
           <HomeTopView />
+          <Text maxLength={4} style={{color: 'red', fontSize: 18}}>
+            {this.state.textContent}
+          </Text>
         </ScrollView>
       </View>
     );
@@ -39,9 +46,16 @@ export default class Home extends Component {
           onPress={() => {
             this.pushToDetail();
           }}>
-          <Text style={styles.leftTitleStyle}>上海</Text>
+          <Text style={styles.leftTitleStyle}>{this.state.editContent}</Text>
         </TouchableOpacity>
-        <TextInput placeholder="输入商家" style={styles.topInputStyle} />
+        <TextInput
+          placeholder="输入商家"
+          underlineColorAndroid={Platform.OS === 'ios' ? 'red' : 'transparent'}
+          style={styles.topInputStyle}
+          onChangeText={(text) => {
+            this.setState({editContent: text});
+          }}
+        />
         <View style={styles.rightNavViewStyle}>
           <TouchableOpacity
             onPress={() => {
@@ -73,7 +87,6 @@ export default class Home extends Component {
     });
   }
   fetchData() {
-    console.log('*****start*****');
     fetch('https://ibottle-show.haoduoke.cn/k/integration/login', {
       method: 'POST',
       headers: {
@@ -87,10 +100,18 @@ export default class Home extends Component {
       }),
     })
       .then((response) => {
-        return response.text();
+        return response.json();
       })
       .then((json) => {
-        console.log('***end***' + json);
+        if (json.code === 10000) {
+          this.setState({
+            textContent: json.data.token,
+          });
+        } else {
+          this.setState({
+            textContent: json.message,
+          });
+        }
       })
       .catch((error) => {
         console.error(error);

@@ -6,9 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
+  Dimensions,
 } from 'react-native';
-import {screenW} from '../Launch';
-
+const screenW = Dimensions.get('window').width;
 export default class MineHeaderView extends Component {
   render(): React.ReactNode {
     return (

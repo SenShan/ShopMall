@@ -15,8 +15,9 @@ import {
   Dimensions,
 } from 'react-native';
 import HomeTopView from './HomeTopView';
+import DialogModule from '../../NativeJava';
 const screenW = Dimensions.get('window').width;
-import {TENANT, USERNAME, PASSWORD} from '../Param';
+import {baseUrl, TENANT, USERNAME, PASSWORD} from '../Param';
 import HomeDetail from './HomeDetail';
 export default class Home extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ export default class Home extends Component {
           <Text style={styles.leftTitleStyle}>{this.state.editContent}</Text>
         </TouchableOpacity>
         <TextInput
-          placeholder="输入商家"
+          placeholder="输入商家1"
           underlineColorAndroid={Platform.OS === 'ios' ? 'red' : 'transparent'}
           style={styles.topInputStyle}
           onChangeText={(text) => {
@@ -59,7 +60,8 @@ export default class Home extends Component {
         <View style={styles.rightNavViewStyle}>
           <TouchableOpacity
             onPress={() => {
-              ToastAndroid.show('通知', ToastAndroid.SHORT);
+              DialogModule.showWindow();
+              // ToastAndroid.show('通知', ToastAndroid.SHORT);
             }}>
             <Image
               source={require('../../image/notify.png')}
@@ -87,7 +89,7 @@ export default class Home extends Component {
     });
   }
   fetchData() {
-    fetch('https://ibottle-show.haoduoke.cn/k/integration/login', {
+    fetch(baseUrl, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

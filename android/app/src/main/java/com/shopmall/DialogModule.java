@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -30,20 +31,13 @@ public class DialogModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showWindow() {
-        Log.e("native","调用没");
+    public void showWindow(String content,Callback callback) {
+        Log.e("native",content);
 //        View view = View.inflate(getCurrentActivity(), R.layout.dialog, null);
 //        dialog = new Dialog(context, R.style.Dialog_Blur);
 //        dialog.setContentView(view);
 //        dialog.setCancelable(false);
 //        dialog.show();
-        Toast.makeText(getCurrentActivity(),"Toast",Toast.LENGTH_SHORT);
-    }
-
-    @ReactMethod
-    public void closeWindow() {
-        if (dialog != null) {
-            dialog.dismiss();
-        }
+        callback.invoke("向React Native返回React Native发来的 { "+content+"}");
     }
 }

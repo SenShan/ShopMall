@@ -17,7 +17,15 @@ import {
 import HomeTopView from './HomeTopView';
 import DialogModule from '../../NativeJava';
 const screenW = Dimensions.get('window').width;
-import {baseUrl, TENANT, USERNAME, PASSWORD} from '../Param';
+import {
+  baseUrl,
+  TENANT,
+  USERNAME,
+  PASSWORD,
+  POST,
+  Accept,
+  Content_Type,
+} from '../Param';
 import HomeDetail from './HomeDetail';
 export default class Home extends Component {
   constructor(props) {
@@ -60,8 +68,9 @@ export default class Home extends Component {
         <View style={styles.rightNavViewStyle}>
           <TouchableOpacity
             onPress={() => {
-              DialogModule.showWindow();
-              // ToastAndroid.show('通知', ToastAndroid.SHORT);
+              DialogModule.showWindow('向Android传递的是:888', (result) => {
+                this.setState({textContent: result});
+              });
             }}>
             <Image
               source={require('../../image/notify.png')}
@@ -90,10 +99,10 @@ export default class Home extends Component {
   }
   fetchData() {
     fetch(baseUrl, {
-      method: 'POST',
+      method: POST,
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: Accept,
+        'Content-Type': Content_Type,
       },
       body: JSON.stringify({
         tenant: TENANT,

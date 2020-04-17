@@ -7,6 +7,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
+import {themeColor} from '../Param';
 const screenW = Dimensions.get('window').width;
 export default class MineHeaderView extends Component {
   render(): React.ReactNode {
@@ -65,7 +66,7 @@ export default class MineHeaderView extends Component {
 const styles = StyleSheet.create({
   headContainer: {
     height: 200,
-    backgroundColor: 'rgb(255,96,0)',
+    backgroundColor: themeColor,
   },
   headViewStyle: {
     flexDirection: 'row',

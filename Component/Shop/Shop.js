@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Button, ToastAndroid} from 'react-native';
 import Dialog from '../view/Dialog';
-import {toolBarHeight} from '../Param';
+import {themeColor, toolBarHeight} from '../Param';
 import {screenW} from '../Launch';
 export default class Shop extends Component {
   render(): React.ReactNode {
@@ -27,7 +27,7 @@ export default class Shop extends Component {
           style={{
             width: screenW,
             height: toolBarHeight,
-            backgroundColor: 'red',
+            backgroundColor: themeColor,
           }}
         />
         <View

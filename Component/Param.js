@@ -6,5 +6,5 @@ export const GET = 'GET';
 export const POST = 'POST';
 export const Accept = 'application/json';
 export const Content_Type = 'application/json';
-export const toolBarHeight = 65;
+export const toolBarHeight = 58;
 export const themeColor = 'rgba(255,96,0,1)';

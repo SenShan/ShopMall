@@ -21,7 +21,8 @@ export default class MineMiddleView extends Component {
         <InnerView
           key={i}
           position={i}
-          iconName={data.iconName}
+          // iconName={data.iconName}
+          iconName={require('../../image/card.png')}
           title={data.title}
         />,
       );
@@ -47,7 +48,7 @@ class InnerView extends Component {
         }}>
         <View style={styles.innerViewStyle}>
           <Image
-            source={{uri: this.props.iconName}}
+            source={this.props.iconName}
             style={{width: 40, height: 30, marginBottom: 3}}
           />
           <Text style={{color: 'gray'}}>{this.props.title}</Text>

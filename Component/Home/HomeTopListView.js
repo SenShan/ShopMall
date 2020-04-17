@@ -11,6 +11,7 @@ import {
   Dimensions,
 } from 'react-native';
 import ListView from 'deprecated-react-native-listview';
+import {themeColor} from '../Param';
 const screenW = Dimensions.get('window').width;
 const cols = 5;
 const cellW = Platform.OS === 'ios' ? 70 : 60;
@@ -78,6 +79,6 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: Platform.OS === 'ios' ? 14 : 12,
-    color: 'blue',
+    color: themeColor,
   },
 });

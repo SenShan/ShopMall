@@ -13,6 +13,7 @@ import {
   Platform,
   ToastAndroid,
   Dimensions,
+  RefreshControl,
 } from 'react-native';
 import HomeTopView from './HomeTopView';
 import DialogModule from '../../NativeJava';
@@ -26,8 +27,10 @@ import {
   Accept,
   Content_Type,
   toolBarHeight,
+  themeColor,
 } from '../Param';
 import HomeDetail from './HomeDetail';
+import Swipe from './Swipe';
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +45,7 @@ export default class Home extends Component {
       <View style={styles.homeContainer}>
         {this.renderTopBar()}
         <ScrollView>
+          <Swipe />
           <HomeTopView />
           <Text maxLength={4} style={{color: 'red', fontSize: 18}}>
             {this.state.textContent}
@@ -142,7 +146,7 @@ const styles = StyleSheet.create({
   },
   homeTopViewStyle: {
     height: Platform.OS === 'ios' ? 74 : toolBarHeight,
-    backgroundColor: '#468AFF',
+    backgroundColor: themeColor,
     //主轴方向
     flexDirection: 'row',
     //两侧对齐方式 垂直居中

@@ -4,6 +4,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Button, ToastAndroid} from 'react-native';
 import Dialog from '../view/Dialog';
+import {toolBarHeight} from '../Param';
+import {screenW} from '../Launch';
 export default class Shop extends Component {
   render(): React.ReactNode {
     return (
@@ -23,8 +25,16 @@ export default class Shop extends Component {
         />
         <View
           style={{
+            width: screenW,
+            height: toolBarHeight,
+            backgroundColor: 'red',
+          }}
+        />
+        <View
+          style={{
             width: 90,
             height: 40,
+            marginTop: 30,
             borderRadius: 10,
             borderWidth: 2,
             borderColor: 'red',

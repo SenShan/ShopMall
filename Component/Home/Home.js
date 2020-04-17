@@ -25,6 +25,7 @@ import {
   POST,
   Accept,
   Content_Type,
+  toolBarHeight,
 } from '../Param';
 import HomeDetail from './HomeDetail';
 export default class Home extends Component {
@@ -33,12 +34,13 @@ export default class Home extends Component {
     this.state = {
       textContent: null,
       editContent: null,
+      location: '上海',
     };
   }
   render(): React.ReactNode {
     return (
-      <View style={styles.container}>
-        {this.renderNavBar()}
+      <View style={styles.homeContainer}>
+        {this.renderTopBar()}
         <ScrollView>
           <HomeTopView />
           <Text maxLength={4} style={{color: 'red', fontSize: 18}}>
@@ -48,14 +50,14 @@ export default class Home extends Component {
       </View>
     );
   }
-  renderNavBar() {
+  renderTopBar() {
     return (
-      <View style={styles.navOutViewStyle}>
+      <View style={styles.homeTopViewStyle}>
         <TouchableOpacity
           onPress={() => {
             this.pushToDetail();
           }}>
-          <Text style={styles.leftTitleStyle}>{this.state.editContent}</Text>
+          <Text style={styles.textTopStyle}>{this.state.location}</Text>
         </TouchableOpacity>
         <TextInput
           placeholder="搜索..."
@@ -65,7 +67,7 @@ export default class Home extends Component {
             this.setState({editContent: text});
           }}
         />
-        <View style={styles.rightNavViewStyle}>
+        <View style={styles.homeTopRightStyle}>
           <TouchableOpacity
             onPress={() => {
               DialogModule.showWindow('向Android传递的是:888', (result) => {
@@ -74,7 +76,7 @@ export default class Home extends Component {
             }}>
             <Image
               source={require('../../image/notify.png')}
-              style={styles.navRightImgStyle}
+              style={styles.topImageStyle}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -84,7 +86,7 @@ export default class Home extends Component {
             }}>
             <Image
               source={require('../../image/scan.png')}
-              style={styles.navRightImgStyle}
+              style={styles.topImageStyle}
             />
           </TouchableOpacity>
         </View>
@@ -125,15 +127,21 @@ export default class Home extends Component {
         }
       })
       .catch((error) => {
-        console.error(error);
+        this.setState({
+          textContent: 'error=' + error,
+        });
       })
       .done();
   }
 }
 
 const styles = StyleSheet.create({
-  navOutViewStyle: {
-    height: Platform.OS === 'ios' ? 74 : 64,
+  homeContainer: {
+    flex: 1,
+    backgroundColor: '#e8e8e8',
+  },
+  homeTopViewStyle: {
+    height: Platform.OS === 'ios' ? 74 : toolBarHeight,
     backgroundColor: '#468AFF',
     //主轴方向
     flexDirection: 'row',
@@ -142,12 +150,12 @@ const styles = StyleSheet.create({
     //主轴方向居中
     justifyContent: 'center',
   },
-  leftTitleStyle: {
+  textTopStyle: {
     color: 'white',
     paddingEnd: 10,
   },
   topInputStyle: {
-    width: screenW * 0.8,
+    width: screenW * 0.7,
     height: Platform.OS === 'ios' ? 40 : 35,
     backgroundColor: 'white',
     marginTop: Platform.OS === 'ios' ? 18 : 0,
@@ -155,23 +163,14 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     paddingLeft: 10,
   },
-  rightNavViewStyle: {
+  homeTopRightStyle: {
     flexDirection: 'row',
     height: 64,
     alignItems: 'center',
   },
-  navRightImgStyle: {
+  topImageStyle: {
     width: Platform.OS === 'ios' ? 28 : 24,
     height: Platform.OS === 'ios' ? 28 : 24,
     marginLeft: 10,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#e8e8e8',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
 });

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-  AppRegistry,
   Image,
   View,
   StyleSheet,
@@ -12,7 +11,7 @@ const screenW = Dimensions.get('window').width;
 export default class MineHeaderView extends Component {
   render(): React.ReactNode {
     return (
-      <View style={styles.container}>
+      <View style={styles.headContainer}>
         {this.renderTopView()}
         {this.renderBottomView()}
       </View>
@@ -21,19 +20,15 @@ export default class MineHeaderView extends Component {
 
   renderTopView() {
     return (
-      <View style={styles.topViewStyle}>
+      <View style={styles.headViewStyle}>
         <Image
-          source={require('../../image/home.png')}
-          style={styles.leftIconStyle}
+          style={styles.headImageStyle}
+          source={require('../../image/head.jpg')}
         />
-        <View style={styles.conterViewStyle}>
+        <View style={styles.headTextStyle}>
           <Text style={{fontSize: 18, color: 'white', fontWeight: 'bold'}}>
-            京东电商
+            路成
           </Text>
-          <Image
-            source={require('../../image/home.png')}
-            style={{width: 8, height: 13, marginRight: 8}}
-          />
         </View>
       </View>
     );
@@ -45,16 +40,16 @@ export default class MineHeaderView extends Component {
   }
   renderBottomItem() {
     //组件数据
-    var items = [];
+    const items = [];
     //数据
-    var dataArr = [
+    const dataArr = [
       {number: '100', title: '购物券'},
       {number: '12', title: '评价'},
       {number: '50', title: '收藏'},
     ];
     //遍历创建组件转入数组
-    for (var i = 0; i < dataArr.length; i++) {
-      var data = dataArr[i];
+    for (let i = 0; i < dataArr.length; i++) {
+      const data = dataArr[i];
       items.push(
         <TouchableOpacity key={i}>
           <View style={styles.bottomInnerViewStyle}>
@@ -68,24 +63,24 @@ export default class MineHeaderView extends Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  headContainer: {
     height: 200,
     backgroundColor: 'rgb(255,96,0)',
   },
-  topViewStyle: {
+  headViewStyle: {
     flexDirection: 'row',
-    marginTop: 80,
+    marginTop: 40,
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  leftIconStyle: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    borderWidth: 3,
+  headImageStyle: {
+    width: 80,
+    height: 80,
+    borderRadius: 45,
+    borderWidth: 1,
     borderColor: 'rgba(0,0,0,2)',
   },
-  conterViewStyle: {
+  headTextStyle: {
     flexDirection: 'row',
     width: screenW * 0.6,
   },
@@ -96,7 +91,7 @@ const styles = StyleSheet.create({
   },
   bottomInnerViewStyle: {
     width: screenW / 3 + 1,
-    height: 40,
+    height: 50,
     backgroundColor: 'rgba(255,255,255,0.4)',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -26,7 +25,8 @@ export default class CommonCell extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          alert('点击了');
+          this.props.onclick ? this.props.onclick() : null;
+          this.setState({isOn: !this.state.isOn});
         }}>
         <View style={styles.container}>
           <Text>{this.props.title}</Text>
@@ -40,7 +40,7 @@ export default class CommonCell extends Component {
     if (this.props.isSwitch) {
       return (
         <Switch
-          value={this.state.isOn == true}
+          value={this.state.isOn === true}
           onValueChange={() => {
             this.setState({isOn: !this.state.isOn});
           }}
@@ -72,7 +72,7 @@ export default class CommonCell extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    height: Platform.OS == 'ios' ? 40 : 30,
+    height: Platform.OS === 'ios' ? 60 : 50,
     borderBottomColor: '#ddd',
     borderBottomWidth: 0.5,
     flexDirection: 'row',

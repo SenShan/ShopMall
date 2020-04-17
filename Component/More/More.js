@@ -10,8 +10,10 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
+  ToastAndroid,
 } from 'react-native';
 import CommonCell from './CommonCell';
+import {themeColor, toolBarHeight} from '../Param';
 export default class More extends Component {
   render(): React.ReactNode {
     return (
@@ -19,23 +21,14 @@ export default class More extends Component {
         {/*导航条*/}
         {this.renderNavBar()}
         <ScrollView>
-          <View style={{marginTop: 20}}>
-            <CommonCell title="扫一扫" />
-          </View>
-          <View style={{marginTop: 20}}>
-            <CommonCell title="省流量模式" isSwitch={true} />
-            <CommonCell title="扫一扫" />
-            <CommonCell title="扫一扫" />
-            <CommonCell title="扫一扫" />
-            <CommonCell title="清空缓存" rightTitle="1.99M" />
-          </View>
-          <View style={{marginTop: 20}}>
-            <CommonCell title="省流量模式" isSwitch={true} />
-            <CommonCell title="扫一扫" />
-            <CommonCell title="扫一扫" />
-            <CommonCell title="扫一扫" />
-            <CommonCell title="扫一扫" />
-          </View>
+          <CommonCell title="省流量模式" isSwitch={true} />
+          <CommonCell title="清空缓存" rightTitle="1.99M" />
+          <CommonCell
+            title="扫一扫"
+            onclick={() => {
+              ToastAndroid.show('点击', ToastAndroid.SHORT);
+            }}
+          />
         </ScrollView>
       </View>
     );
@@ -63,8 +56,8 @@ export default class More extends Component {
 const styles = StyleSheet.create({
   // 导航条视图
   navOutViewStyle: {
-    height: Platform.OS === 'ios' ? 74 : 64,
-    backgroundColor: 'rgba(255,96,0,1)',
+    height: Platform.OS === 'ios' ? 74 : toolBarHeight,
+    backgroundColor: themeColor,
     // 主轴方向
     flexDirection: 'row',
     // 侧轴对齐方式 垂直居中

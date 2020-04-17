@@ -51,7 +51,7 @@ export default class HomeTopListView extends Component {
         <View style={styles.cellStyle}>
           <Image
             // source={{uri: rowData.image}}
-            source={require('../../image/home.png')}
+            source={require('../../image/label.jpg')}
             style={{width: 52, height: 52}}
           />
           <Text style={styles.titleStyle}>{rowData.title}</Text>
@@ -78,6 +78,6 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: Platform.OS === 'ios' ? 14 : 12,
-    color: 'gray',
+    color: 'blue',
   },
 });

@@ -10,7 +10,7 @@ export default class Mine extends Component {
   render(): React.ReactNode {
     return (
       <ScrollView>
-        <View style={{marginTop: 20}}>
+        <View>
           <MineHeaderView />
           <CommonMyCell
             leftIconName={require('../../image/money.png')}

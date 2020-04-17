@@ -58,7 +58,7 @@ export default class Home extends Component {
           <Text style={styles.leftTitleStyle}>{this.state.editContent}</Text>
         </TouchableOpacity>
         <TextInput
-          placeholder="输入商家1"
+          placeholder="搜索..."
           underlineColorAndroid={Platform.OS === 'ios' ? 'red' : 'transparent'}
           style={styles.topInputStyle}
           onChangeText={(text) => {

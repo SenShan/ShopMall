@@ -1,10 +1,15 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
+import {toolBarHeight} from '../../Param';
 export const DetailStyle = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    height: Platform.OS === 'ios' ? 74 : toolBarHeight,
+    backgroundColor: '#468AFF',
+    //主轴方向
+    flexDirection: 'row',
+    //两侧对齐方式 垂直居中
     alignItems: 'center',
-    backgroundColor: 'red',
+    //主轴方向居中
+    justifyContent: 'flex-start',
   },
   welcome: {
     fontSize: 20,

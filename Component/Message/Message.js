@@ -2,7 +2,7 @@
  * 消息
  * */
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Platform} from 'react-native';
+import {StyleSheet, View, Text, Platform, TouchableOpacity} from 'react-native';
 export default class Message extends Component {
   render(): React.ReactNode {
     return (
@@ -15,11 +15,19 @@ export default class Message extends Component {
   renderNavBar() {
     return (
       <View style={styles.navOutViewStyle}>
-        <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>
-          消息
-        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            this.goBack();
+          }}>
+          <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>
+            消息
+          </Text>
+        </TouchableOpacity>
       </View>
     );
+  }
+  goBack() {
+    this.props.navigator.pop();
   }
 }
 

@@ -7,7 +7,7 @@ export default class Swipe extends Component {
     return (
       <Swiper
         style={styles.swipeStyle} //样式
-        height={200} //组件高度
+        height={190} //组件高度
         loop={true} //如果设置为false，那么滑动到最后一张时，再次滑动将不会滑到第一张图片。
         autoplay={true} //自动轮播
         autoplayTimeout={4} //每隔4秒切换
@@ -16,7 +16,7 @@ export default class Swipe extends Component {
         showsButtons={false} //为false时不显示控制按钮
         showsPagination={true} //为false不显示下方圆点
         onMomentumScrollEnd={(e, state, context) => {
-          console.log(context.state);
+          // console.log(context.state);
         }}
         dot={
           <View

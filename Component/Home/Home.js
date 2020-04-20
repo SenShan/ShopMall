@@ -100,7 +100,11 @@ export default class Home extends Component {
   pushToDetail() {
     this.props.navigator.push({
       component: HomeDetail, // 要跳转过去的组件
-      title: '首页详细页',
+      title: '商品详细页',
+      passProps: {
+        //将输入框的内容 传递给下一个页面
+        pageValue: '页面传值',
+      },
     });
   }
   fetchData() {

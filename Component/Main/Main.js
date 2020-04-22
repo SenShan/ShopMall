@@ -77,7 +77,8 @@ export default class Main extends Component {
           badgeText="1"
           selected={this.state.selectedTab === more}
           onPress={() => this.setState({selectedTab: more})}>
-          <More />
+          {/*配置这个跳转后隐藏底部Tab*/}
+          <More navigator={this.props.navigator} />
         </TabNavigator.Item>
         {/*--我的--*/}
         <TabNavigator.Item

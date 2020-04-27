@@ -14,10 +14,10 @@ export default class Launch extends Component {
   }
   componentDidMount(): void {
     setTimeout(() => {
-      this.props.navigator.replace({
+      this.props.navigator.push({
         component: Main,
       });
-    }, 2000);
+    }, 1200);
   }
 }
 

@@ -125,21 +125,20 @@ export default class Home extends Component {
       })
       .then((json) => {
         if (json.code === 10000) {
-          this.setState({
-            textContent: json.data.token,
-          });
+          this.makeContent(json.data.token);
         } else {
-          this.setState({
-            textContent: json.message,
-          });
+          this.makeContent(json.message);
         }
       })
       .catch((error) => {
-        this.setState({
-          textContent: 'error=' + error,
-        });
+        this.makeContent(error);
       })
       .done();
+  }
+  makeContent(msg) {
+    this.setState({
+      textContent: msg,
+    });
   }
 }
 

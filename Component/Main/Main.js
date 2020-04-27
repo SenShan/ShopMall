@@ -52,13 +52,7 @@ export default class Main extends Component {
           badgeText={'1'}
           selected={this.state.selectedTab === home}
           onPress={() => this.setState({selectedTab: home})}>
-          <Navigator
-            initialRoute={{name: '首页', component: Home}}
-            renderScene={(route, navigator) => {
-              let Component = route.component;
-              return <Component {...route.passProps} navigator={navigator} />;
-            }}
-          />
+          <Home navigator={this.props.navigator} />
         </TabNavigator.Item>
         <TabNavigator.Item
           title="更多"

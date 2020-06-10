@@ -30,6 +30,7 @@ import {
   themeColor,
 } from '../Param';
 import HomeDetail from './HomeDetail';
+import Animation from '../anim/Animation';
 import Swipe from './Swipe';
 export default class Home extends Component {
   constructor(props) {
@@ -99,7 +100,7 @@ export default class Home extends Component {
   }
   pushToDetail() {
     this.props.navigator.push({
-      component: HomeDetail, // 要跳转过去的组件
+      component: Animation, // 要跳转过去的组件
       title: '商品详细页',
       passProps: {
         //将输入框的内容 传递给下一个页面

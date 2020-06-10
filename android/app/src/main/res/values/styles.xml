@@ -6,7 +6,6 @@
         <item name="colorPrimaryDark">@android:color/holo_orange_dark</item>
         <item name="colorAccent">@android:color/holo_orange_dark</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="Dialog_Blur" parent="@android:style/Theme.Dialog">

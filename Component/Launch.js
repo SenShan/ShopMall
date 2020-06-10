@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, Image, Dimensions} from 'react-native';
 import Main from './Main/Main';
+import BaseComponent from './base/BaeComponent';
 export const screenW = Dimensions.get('window').width;
 export const screenH = Dimensions.get('window').height;
-export default class Launch extends Component {
+export default class Launch extends BaseComponent {
   render(): React.ReactNode {
     return (
       <Image

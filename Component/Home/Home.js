@@ -32,6 +32,8 @@ import {
 import HomeDetail from './HomeDetail';
 import Animation from '../anim/Animation';
 import Swipe from './Swipe';
+import Location from './Location';
+import FootListItem from './FootListItem';
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -45,12 +47,24 @@ export default class Home extends Component {
     return (
       <View style={styles.homeContainer}>
         {this.renderTopBar()}
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Swipe />
           <HomeTopView />
-          <Text maxLength={4} style={{color: 'red', fontSize: 18}}>
+          <Text
+            maxLength={4}
+            style={{
+              color: 'red',
+              fontSize: 18,
+              marginTop: 20,
+              textAlign: 'center',
+              textAlignVertical: 'center',
+            }}>
             {this.state.textContent}
           </Text>
+          <FootListItem />
+          <FootListItem />
+          <FootListItem />
+          <FootListItem />
         </ScrollView>
       </View>
     );
@@ -60,7 +74,7 @@ export default class Home extends Component {
       <View style={styles.homeTopViewStyle}>
         <TouchableOpacity
           onPress={() => {
-            this.pushToDetail();
+            this.pushToLocation();
           }}>
           <Text style={styles.textTopStyle}>{this.state.location}</Text>
         </TouchableOpacity>
@@ -98,7 +112,7 @@ export default class Home extends Component {
       </View>
     );
   }
-  pushToDetail() {
+  pushToLocation() {
     this.props.navigator.push({
       component: Animation, // 要跳转过去的组件
       title: '商品详细页',

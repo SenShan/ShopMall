@@ -29,6 +29,18 @@ export default class More extends Component {
               ToastAndroid.show('点击', ToastAndroid.SHORT);
             }}
           />
+          <View
+            style={{
+              width: 200,
+              height: 200,
+              backgroundColor: 'black',
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
+            }}>
+            <Text style={styles.textStyle}>1</Text>
+            <Text style={styles.textStyle}>2</Text>
+          </View>
         </ScrollView>
       </View>
     );
@@ -85,5 +97,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  textStyle: {
+    width: 60,
+    height: 50,
+    margin: 3,
+    color: 'red',
+    paddingStart: 10,
+    fontSize: 20,
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: 'green',
+    borderStyle: 'solid',
+    backgroundColor: 'green',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
 });

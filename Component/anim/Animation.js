@@ -8,7 +8,7 @@ import {
   BackHandler,
   TouchableHighlight,
 } from 'react-native';
-import BaseComponent from '../base/BaeComponent';
+import BaseComponent from '../base/BaseComponent';
 export default class Animation extends BaseComponent {
   constructor(props) {
     super(props);
@@ -19,6 +19,10 @@ export default class Animation extends BaseComponent {
   componentDidMount() {
     this.animate();
   }
+  onCreate() {
+    super.onCreate();
+  }
+
   animate() {
     this.animatedValue1.setValue(0);
     this.animatedValue2.setValue(0);

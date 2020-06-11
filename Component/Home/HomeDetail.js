@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import {DetailStyle} from './style/DetailStyle';
-import Message from '../Message/Message';
 export default class HomeDetail extends Component {
   render(): React.ReactNode {
     return (
@@ -21,14 +20,7 @@ export default class HomeDetail extends Component {
           />
         </TouchableOpacity>
         <View style={{flex: 1, justifyContent: 'center'}}>
-          <TouchableOpacity
-            onPress={() => {
-              this.jump();
-            }}>
-            <Text style={DetailStyle.welcome}>
-              收到=={this.props.pageValue}
-            </Text>
-          </TouchableOpacity>
+          <Text style={DetailStyle.welcome}>收到==</Text>
         </View>
         <View
           style={{
@@ -38,11 +30,6 @@ export default class HomeDetail extends Component {
         />
       </View>
     );
-  }
-  jump() {
-    this.props.navigator.push({
-      component: Message, // 要跳转过去的组件
-    });
   }
   goBack() {
     this.props.navigator.pop();

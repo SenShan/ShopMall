@@ -8,7 +8,8 @@ import {
   ToastAndroid,
 } from 'react-native';
 
-const MiddleData = require('../../Component/Mine/MiddleData.json');
+import MiddleData from '../../Component/Mine/MiddleData.json';
+
 export default class MineMiddleView extends Component {
   render(): React.ReactNode {
     return <View style={styles.container}>{this.renderAllItem()}</View>;

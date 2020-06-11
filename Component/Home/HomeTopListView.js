@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   Image,
   Platform,
-  ToastAndroid,
   Dimensions,
 } from 'react-native';
 import ListView from 'deprecated-react-native-listview';
 import {themeColor} from '../Param';
+import HomeDetail from './HomeDetail';
 const screenW = Dimensions.get('window').width;
 const cols = 5;
 const cellW = Platform.OS === 'ios' ? 70 : 60;
@@ -23,7 +22,7 @@ export default class HomeTopListView extends Component {
   };
   constructor(props) {
     super(props);
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(this.props.dataArr),
     };
@@ -38,17 +37,22 @@ export default class HomeTopListView extends Component {
       />
     );
   }
+  _onPress(rowData) {
+    this.props.navigator.push({
+      component: HomeDetail, // 要跳转过去的组件
+      title: '商品详细页',
+      passProps: {
+        //将输入框的内容 传递给下一个页面
+        name: rowData,
+      },
+    });
+  }
   // 返回具体的一行
   renderRow(rowData) {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => {
-          ToastAndroid.show(
-            '图片=' + rowData.image + 'title=' + rowData.title,
-            ToastAndroid.SHORT,
-          );
-        }}>
+        onPress={() => this._onPress.bind(this, rowData)}>
         <View style={styles.cellStyle}>
           <Image
             // source={{uri: rowData.image}}

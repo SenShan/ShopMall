@@ -17,6 +17,12 @@ const App: () => React$Node = () => {
         let Component = route.component;
         return <Component {...route.passProps} navigator={navigator} />;
       }}
+      configureScene={(route) => {
+        if (route.sceneConfig) {
+          return route.sceneConfig;
+        }
+        return Navigator.SceneConfigs.PushFromRight;
+      }}
     />
   );
 };

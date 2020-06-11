@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Image, Dimensions} from 'react-native';
 import Main from './Main/Main';
-import BaseComponent from './base/BaseComponent';
+import BaseComponent from './Base/BaseComponent';
 export const screenW = Dimensions.get('window').width;
 export const screenH = Dimensions.get('window').height;
 export default class Launch extends BaseComponent {

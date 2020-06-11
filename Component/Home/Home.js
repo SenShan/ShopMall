@@ -30,7 +30,7 @@ import {
   themeColor,
 } from '../Param';
 import HomeDetail from './HomeDetail';
-import Animation from '../anim/Animation';
+import Animation from '../Anim/Animation';
 import Swipe from './Swipe';
 import Location from './Location';
 import FootListItem from './FootListItem';

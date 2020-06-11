@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
 import HomeTopListView from './HomeTopListView';
-import TopMenuJson from './TopMenu.json';
+import TopMenuJson from '../Json/TopMenu.json';
 
 export default class HomeTopView extends Component {
   render(): React.ReactNode {

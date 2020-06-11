@@ -3,7 +3,7 @@
  * */
 import React, {Component} from 'react';
 import {StyleSheet, View, Button, ToastAndroid} from 'react-native';
-import Dialog from '../view/Dialog';
+import Dialog from '../View/Dialog';
 import {themeColor, toolBarHeight} from '../Param';
 import {screenW} from '../Launch';
 export default class Shop extends Component {

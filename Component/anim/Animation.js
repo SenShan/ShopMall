@@ -5,8 +5,8 @@ import {
   Animated,
   Text,
   Easing,
-  BackHandler,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import BaseComponent from '../Base/BaseComponent';
 export default class Animation extends BaseComponent {
@@ -58,8 +58,16 @@ export default class Animation extends BaseComponent {
     });
     return (
       <View style={styles.container}>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => {
+            this.props.navigator.pop();
+          }}>
+          <Text style={styles.buttonText}>返回</Text>
+        </TouchableHighlight>
+
         <Animated.View style={{transform: [{scale: scaleText}]}}>
-          <Text>Welcome</Text>
+          <Text>欢迎</Text>
         </Animated.View>
 
         <Animated.View style={{marginTop: 20, transform: [{rotate: spinText}]}}>
@@ -70,7 +78,7 @@ export default class Animation extends BaseComponent {
           <TouchableHighlight
             style={styles.button}
             onPress={this.animate.bind(this)}>
-            <Text style={styles.buttonText}>Click here to Start</Text>
+            <Text style={styles.buttonText}>开始</Text>
           </TouchableHighlight>
         </Animated.View>
       </View>
@@ -80,7 +88,8 @@ export default class Animation extends BaseComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
   },

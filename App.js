@@ -15,7 +15,8 @@ const App: () => React$Node = () => {
       initialRoute={{name: '启动页', component: Launch}}
       renderScene={(route, navigator) => {
         let Component = route.component;
-        return <Component {...route.passProps} navigator={navigator} />;
+        //passParam 传值任意定义
+        return <Component {...route.passParam} navigator={navigator} />;
       }}
       configureScene={(route) => {
         if (route.sceneConfig) {

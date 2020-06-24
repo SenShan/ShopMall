@@ -18,9 +18,6 @@ export default class Launch extends BaseComponent {
       this.props.navigator.replace({
         component: Main,
       });
-      // this.props.navigator.push({
-      //   component: Main,
-      // });
     }, 1200);
   }
   componentWillUnmount() {

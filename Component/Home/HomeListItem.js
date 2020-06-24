@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
-import HomeTopListView from './HomeTopListView';
+import {StyleSheet, View, ScrollView} from 'react-native';
+import HomeListItemView from './HomeListItemView';
 import TopMenuJson from '../Json/TopMenu.json';
 
-export default class HomeTopView extends Component {
+export default class HomeListItem extends Component {
   render(): React.ReactNode {
     return (
+      // <View>{this.renderScrollItem()}</View>
       <ScrollView
         style={styles.container}
         horizontal={true}
@@ -22,7 +23,7 @@ export default class HomeTopView extends Component {
     const itemArr = [];
     const dataArr = TopMenuJson.data;
     for (let i = 0; i < dataArr.length; i++) {
-      itemArr.push(<HomeTopListView key={i} dataArr={dataArr[i]} />);
+      itemArr.push(<HomeListItemView key={i} dataArr={dataArr[i]} />);
     }
     return itemArr;
   }
@@ -30,9 +31,5 @@ export default class HomeTopView extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-  },
-  indicatorViewStyle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
 });

@@ -6,6 +6,9 @@ import {StyleSheet, View, Button, ToastAndroid} from 'react-native';
 import Dialog from '../View/Dialog';
 import {themeColor, toolBarHeight} from '../Param';
 import {screenW} from '../Launch';
+import NavDemo from '../NavDemo';
+import ListDemo from '../ListDemo';
+
 export default class Shop extends Component {
   render(): React.ReactNode {
     return (
@@ -34,22 +37,41 @@ export default class Shop extends Component {
           style={{
             width: 90,
             height: 40,
-            marginTop: 30,
+            marginTop: 0,
             borderRadius: 10,
             borderWidth: 2,
             borderColor: 'red',
           }}>
           <Button
-            title="展示"
+            title="对话框"
             color={'red'}
             onPress={() => {
               this.refs.custom && this.refs.custom.show();
             }}
           />
         </View>
+        <Button
+          title="对话框"
+          color={'red'}
+          onPress={() => {
+            this.jumpNav();
+          }}
+        />
       </View>
     );
   }
+
+  jumpNav() {
+    this.props.navigator.push({
+      component: ListDemo, // 要跳转过去的组件
+      title: '导航',
+      passParam: {
+        //将输入框的内容 传递给下一个页面
+        pageValue: '页面传值',
+      },
+    });
+  }
+
   sure() {
     ToastAndroid.show('点击确定', ToastAndroid.SHORT);
   }

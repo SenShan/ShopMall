@@ -2,13 +2,18 @@
  * 发现
  * */
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Platform} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, Platform} from 'react-native';
 export default class Find extends Component {
   render(): React.ReactNode {
     return (
       <View style={styles.container}>
         {this.renderNavBar()}
-        <Text style={styles.welcome}>发现</Text>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigator.pop();
+          }}>
+          <Text style={styles.welcome}>返回</Text>
+        </TouchableOpacity>
       </View>
     );
   }

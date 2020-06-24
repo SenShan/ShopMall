@@ -15,7 +15,7 @@ import {
   Dimensions,
   RefreshControl,
 } from 'react-native';
-import HomeTopView from './HomeTopView';
+import HomeListItem from './HomeListItem';
 import DialogModule from '../../NativeJava';
 const screenW = Dimensions.get('window').width;
 import {
@@ -29,11 +29,11 @@ import {
   toolBarHeight,
   themeColor,
 } from '../Param';
-import HomeDetail from './HomeDetail';
-import Animation from '../Anim/Animation';
 import Swipe from './Swipe';
 import Location from './Location';
 import FootListItem from './FootListItem';
+import HomeDetail from './HomeDetail';
+import Animation from '../Anim/Animation';
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +49,7 @@ export default class Home extends Component {
         {this.renderTopBar()}
         <ScrollView showsVerticalScrollIndicator={false}>
           <Swipe />
-          <HomeTopView />
+          <HomeListItem navigator={this.props.navigator} />
           <Text
             maxLength={4}
             style={{
@@ -116,9 +116,10 @@ export default class Home extends Component {
     this.props.navigator.push({
       component: Animation, // 要跳转过去的组件
       title: '商品详细页',
-      passProps: {
+      passParam: {
         //将输入框的内容 传递给下一个页面
-        pageValue: '页面传值',
+        value: '页面传值1',
+        name: '页面传值2',
       },
     });
   }

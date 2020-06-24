@@ -1,0 +1,24 @@
+{
+  "result": [
+    {
+      "fullName": "张三",
+      "email": "san@qq.com",
+      "time": "2020-06-21"
+    },
+    {
+      "fullName": "李四",
+      "email": "si@qq.com",
+      "time": "2020-06-22"
+    },
+    {
+      "fullName": "王二",
+      "email": "er@qq.com",
+      "time": "2020-06-23"
+    },
+    {
+      "fullName": "麻子",
+      "email": "zi@qq.com",
+      "time": "2020-06-24"
+    }
+  ]
+}

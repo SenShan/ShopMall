@@ -9,6 +9,8 @@ import {
   View,
   Image,
   Platform,
+  BackHandler,
+  ToastAndroid,
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components';
 
@@ -29,6 +31,22 @@ export default class Main extends Component {
       selectedTab: home,
     };
   }
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackExit);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackExit);
+  }
+  onBackExit = () => {
+    if (this.pressTime && this.pressTime + 2000 >= Date.now()) {
+      BackHandler.exitApp();
+      return false;
+    } else {
+      this.pressTime = Date.now();
+      ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
+      return true;
+    }
+  };
   /**
    * React-Native引用非同级目录下文件 用 ../../
    * */
@@ -92,7 +110,7 @@ export default class Main extends Component {
           badgeText="1"
           selected={this.state.selectedTab === shop}
           onPress={() => this.setState({selectedTab: shop})}>
-          <Shop />
+          <Shop navigator={this.props.navigator} />
         </TabNavigator.Item>
         {/*--更多--*/}
         <TabNavigator.Item

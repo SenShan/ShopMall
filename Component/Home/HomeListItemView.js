@@ -14,9 +14,9 @@ import HomeDetail from './HomeDetail';
 const screenW = Dimensions.get('window').width;
 const cols = 5;
 const cellW = Platform.OS === 'ios' ? 70 : 60;
-const cellH = 70;
+const cellH = 80;
 const vMargin = (screenW - cellW * cols) / (cols + 1);
-export default class HomeTopListView extends Component {
+export default class HomeListItemView extends Component {
   static defaultProps = {
     dataArr: [],
   };
@@ -31,7 +31,7 @@ export default class HomeTopListView extends Component {
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
+        renderRow={this.renderRow.bind(this)}
         contentContainerStyle={styles.contentViewStyle}
         scrollEnabled={false}
       />
@@ -41,7 +41,7 @@ export default class HomeTopListView extends Component {
     this.props.navigator.push({
       component: HomeDetail, // 要跳转过去的组件
       title: '商品详细页',
-      passProps: {
+      passParam: {
         //将输入框的内容 传递给下一个页面
         name: rowData,
       },
@@ -52,7 +52,7 @@ export default class HomeTopListView extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => this._onPress.bind(this, rowData)}>
+        onPress={() => this._onPress(rowData)}>
         <View style={styles.cellStyle}>
           <Image
             // source={{uri: rowData.image}}
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   contentViewStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    width: screenW,
+    width: screenW, //分类展示
     alignItems: 'center',
     justifyContent: 'center',
   },

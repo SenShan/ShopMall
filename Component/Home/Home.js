@@ -48,7 +48,11 @@ export default class Home extends Component {
       <View style={styles.homeContainer}>
         {this.renderTopBar()}
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Swipe />
+          <Swipe
+            onSwipe={() => {
+              ToastAndroid.show('点击1', ToastAndroid.SHORT);
+            }}
+          />
           <HomeListItem navigator={this.props.navigator} />
           <Text
             maxLength={4}

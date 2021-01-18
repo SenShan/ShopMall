@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import CommonCell from './CommonCell';
 import {themeColor, toolBarHeight} from '../Param';
+import Animation from '../Anim/Animation';
+import LayoutGuide from '../LayoutGuide';
 export default class More extends Component {
   render(): React.ReactNode {
     return (
@@ -22,7 +24,15 @@ export default class More extends Component {
         {this.renderNavBar()}
         <ScrollView>
           <CommonCell title="省流量模式" isSwitch={true} />
-          <CommonCell title="清空缓存" rightTitle="1.99M" />
+          <CommonCell
+            title="清空缓存"
+            rightTitle="1.99M"
+            onclick={() => {
+              this.props.navigator.push({
+                component: LayoutGuide, // 要跳转过去的组件
+              });
+            }}
+          />
           <CommonCell
             title="扫一扫"
             onclick={() => {
@@ -36,7 +46,7 @@ export default class More extends Component {
               backgroundColor: 'black',
               flexDirection: 'row',
               justifyContent: 'flex-start',
-              alignItems: 'flex-start',
+              alignItems: 'flex-end',
             }}>
             <Text style={styles.textStyle}>1</Text>
             <Text style={styles.textStyle}>2</Text>
@@ -103,13 +113,13 @@ const styles = StyleSheet.create({
     height: 50,
     margin: 3,
     color: 'red',
-    paddingStart: 10,
+    paddingStart: 0,
     fontSize: 20,
     borderWidth: 2,
     borderRadius: 20,
     borderColor: 'green',
     borderStyle: 'solid',
-    backgroundColor: 'green',
+    backgroundColor: 'transparent',
     textAlign: 'center',
     textAlignVertical: 'center',
   },

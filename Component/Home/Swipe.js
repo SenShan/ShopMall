@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import Swiper from 'react-native-swiper';
-import {StyleSheet, View, Image, Dimensions, Platform} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Image,
+  ToastAndroid,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {screenW} from '../Launch';
 export default class Swipe extends Component {
   render(): React.ReactNode {
@@ -48,21 +54,30 @@ export default class Swipe extends Component {
             }}
           />
         }>
-        <Image
-          source={require('../../image/girl/one.jpg')}
-          style={styles.imageStyle}
-        />
-        <Image
-          source={require('../../image/girl/two.jpg')}
-          style={styles.imageStyle}
-        />
-        <Image
-          source={require('../../image/girl/three.jpg')}
-          style={styles.imageStyle}
-        />
+        {this.renderBanner()}
       </Swiper>
     );
   }
+  renderBanner() {
+    const itemArr = [];
+    const dataArr = [
+      require('../../image/girl/one.jpg'),
+      require('../../image/girl/two.jpg'),
+      require('../../image/girl/three.jpg'),
+    ];
+    for (let i = 0; i < dataArr.length; i++) {
+      itemArr.push(
+        <TouchableWithoutFeedback
+          onPress={() => {
+            this.props.onSwipe ? this.props.onSwipe() : null;
+          }}>
+          <Image key={i} source={dataArr[i]} style={styles.imageStyle} />
+        </TouchableWithoutFeedback>,
+      );
+    }
+    return itemArr;
+  }
+  onClick() {}
 }
 const styles = StyleSheet.create({
   swipeStyle: {},

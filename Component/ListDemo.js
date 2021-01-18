@@ -22,12 +22,19 @@ export default class ListDemo extends Component {
       isLoading: true,
     };
     setTimeout(() => {
+      let temp = [];
+      temp.push({
+        fullName: '追加',
+        email: '2@qq.com',
+        time: '2020-06-22',
+      });
       this.setState({
+        dataSource: this.state.dataSource.map(temp),
         isLoading: false,
       });
     }, 2000);
   }
-
+  onLoadMore() {}
   // 渲染listView
   render() {
     return (
